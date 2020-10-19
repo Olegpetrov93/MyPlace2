@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6EA1064253E1054008E4EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F81DF1253DB69300A66AF0 /* Assets.xcassets */; };
 		A6F81DE9253DB69200A66AF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F81DE8253DB69200A66AF0 /* AppDelegate.swift */; };
 		A6F81DEB253DB69200A66AF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F81DEA253DB69200A66AF0 /* SceneDelegate.swift */; };
 		A6F81DF0253DB69200A66AF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F81DEE253DB69200A66AF0 /* Main.storyboard */; };
-		A6F81DF2253DB69300A66AF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F81DF1253DB69300A66AF0 /* Assets.xcassets */; };
 		A6F81DF5253DB69300A66AF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F81DF3253DB69300A66AF0 /* LaunchScreen.storyboard */; };
 		A6F81DFD253DC12E00A66AF0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F81DFC253DC12E00A66AF0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -126,7 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6F81DF5253DB69300A66AF0 /* LaunchScreen.storyboard in Resources */,
-				A6F81DF2253DB69300A66AF0 /* Assets.xcassets in Resources */,
+				A6EA1064253E1054008E4EF0 /* Assets.xcassets in Resources */,
 				A6F81DF0253DB69200A66AF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +283,7 @@
 		A6F81DFA253DB69300A66AF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -299,6 +300,7 @@
 		A6F81DFB253DB69300A66AF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

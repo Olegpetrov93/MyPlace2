@@ -33,8 +33,17 @@ class TableViewController: UITableViewController {
 
         cell.textLabel?.text = restarenName[indexPath.row]
         cell.imageView?.image = UIImage(named: restarenName[indexPath.row])
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2 //
+        cell.imageView?.clipsToBounds = true
+        
 
         return cell
+    }
+    
+     // MARK: - TablView delegat
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
     }
     
     
