@@ -11,7 +11,7 @@ import UIKit
 class NewPlaceViewController: UITableViewController  {
     
     
-    var newPlace: Place?
+    var newPlace =  Place()
     var imageIsChanged = false
     
     @IBOutlet weak var placeImage: UIImageView!
@@ -23,6 +23,12 @@ class NewPlaceViewController: UITableViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newPlace.savePlaces()
+        
+        DispatchQueue.main.async {
+            self.newPlace.savePlaces()
+        }
         
         saveButton.isEnabled = false
         
@@ -46,14 +52,14 @@ class NewPlaceViewController: UITableViewController  {
             let camera = UIAlertAction(title: "Camera", style: .default) { _ in
                 self.chooseImagePicker(sourse: .camera)
             }
-            camera.setValue(cameraIcon, forKey: "image")
+            camera.setValue(cameraIcon, forKey: "imageData")
             camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             
             let foto = UIAlertAction(title: "Foto", style: .default) { _ in
                 self.chooseImagePicker(sourse: .photoLibrary)
             }
-            foto.setValue(fotoIcon, forKey: "image")
+            foto.setValue(fotoIcon, forKey: "imageData")
             foto.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             
