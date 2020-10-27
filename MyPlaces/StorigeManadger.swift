@@ -18,4 +18,11 @@ class StorigeManadger {
             realm.add(place)
         }
     }
+    static func deliteObject(_ place: Place) {
+        
+        try! realm.write {
+            
+            realm.delete(place)
+        }
+    }
 }

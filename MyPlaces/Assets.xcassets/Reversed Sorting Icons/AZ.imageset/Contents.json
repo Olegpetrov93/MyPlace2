@@ -2,22 +2,24 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Дастархан.jpg",
+      "locale" : "SwiftBook",
       "scale" : "1x"
     },
     {
+      "filename" : "AZ@2x.png",
       "idiom" : "universal",
-      "filename" : "Дастархан@2x.jpg",
+      "locale" : "SwiftBook",
       "scale" : "2x"
     },
     {
+      "filename" : "AZ@3x.png",
       "idiom" : "universal",
-      "filename" : "Дастархан@3x.jpg",
+      "locale" : "SwiftBook",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

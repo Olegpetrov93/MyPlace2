@@ -10,9 +10,9 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController  {
     
-    
-    var newPlace =  Place()
     var imageIsChanged = false
+    
+    var currentPlace: Place?
     
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -24,18 +24,13 @@ class NewPlaceViewController: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newPlace.savePlaces()
-        
-        DispatchQueue.main.async {
-            self.newPlace.savePlaces()
-        }
-        
         saveButton.isEnabled = false
         
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
-        
+    
         tableView.tableFooterView = UIView() // убрали линии ниже таблицы
+        
+        setupEditScreen()
     }
 
 // MARK: Tabl view delegate
@@ -52,14 +47,14 @@ class NewPlaceViewController: UITableViewController  {
             let camera = UIAlertAction(title: "Camera", style: .default) { _ in
                 self.chooseImagePicker(sourse: .camera)
             }
-            camera.setValue(cameraIcon, forKey: "imageData")
+            camera.setValue(cameraIcon, forKey: "image")
             camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             
             let foto = UIAlertAction(title: "Foto", style: .default) { _ in
                 self.chooseImagePicker(sourse: .photoLibrary)
             }
-            foto.setValue(fotoIcon, forKey: "imageData")
+            foto.setValue(fotoIcon, forKey: "image")
             foto.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             
@@ -102,20 +97,61 @@ extension NewPlaceViewController: UITextFieldDelegate  {
         }
     }
     
-    func saveNewPlace() {
-        
+    func savePlace() {
+
         var image: UIImage?
-        
+
         if imageIsChanged {
             image = placeImage.image
         } else {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
         
-        newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, restorentImage: nil, image: image)
+        let imageData = image?.pngData()
         
+        let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData)
+        
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+        
+        StorigeManadger.saveObject(newPlace)
+            
+        }
     }
     
+    private func setupEditScreen() {
+        
+        if currentPlace != nil {
+            
+            setupNavigationBar()
+            imageIsChanged = true
+            
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+            
+            placeImage.image = image
+            placeImage.contentMode = .scaleAspectFill
+            placeName.text = currentPlace?.name
+            placeLocation.text = currentPlace?.location
+            placeType.text = currentPlace?.type
+        }
+    }
+    private func setupNavigationBar() {
+        
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
+        
+    }
 }
 
 // MARK: Work for Image

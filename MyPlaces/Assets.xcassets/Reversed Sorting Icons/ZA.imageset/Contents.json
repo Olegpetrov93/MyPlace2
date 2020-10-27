@@ -2,22 +2,24 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Bonsai.jpg",
+      "locale" : "SwiftBook",
       "scale" : "1x"
     },
     {
+      "filename" : "ZA@2x.png",
       "idiom" : "universal",
-      "filename" : "Bonsai@2x.jpg",
+      "locale" : "SwiftBook",
       "scale" : "2x"
     },
     {
+      "filename" : "ZA@3x.png",
       "idiom" : "universal",
-      "filename" : "Bonsai@3x.jpg",
+      "locale" : "SwiftBook",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
