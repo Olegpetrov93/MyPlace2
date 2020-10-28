@@ -12,7 +12,7 @@ import RealmSwift
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var reverstSortButton: UIBarButtonItem!
+    @IBOutlet weak var reverstSortingButton: UIBarButtonItem!
     @IBOutlet weak var segmentetControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,7 +20,12 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        segmentetControl.setTitle("Date", forSegmentAt: 0)
+        segmentetControl.setTitle("Name", forSegmentAt: 1)
+        
+        
+        
         places = realm.objects(Place.self)
 
     }
@@ -88,9 +93,17 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.reloadData()
     }
 
-    @IBAction func reverstSortAction(_ sender: Any) {
+    @IBAction func reverstSorting(_ sender: Any) {
+        
     }
-    @IBAction func segmentetControlAction(_ sender: UISegmentedControl) {
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "date")
+        } else {
+            places = places.sorted(byKeyPath: "name")
+        }
+        tableView.reloadData()
     }
     
 }

@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController id="vwA-PC-dLz" customClass="NewPlaceViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wYa-kQ-RqC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -188,7 +188,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dTW-cd-DM1">
-                                <rect key="frame" x="0.0" y="116" width="414" height="780"/>
+                                <rect key="frame" x="0.0" y="118" width="414" height="778"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -244,7 +244,7 @@
                                             <outlet property="locationLabel" destination="lhm-Lc-v5C" id="DGh-oj-Mkr"/>
                                             <outlet property="nameLabel" destination="t0n-6S-KEb" id="aKh-3B-A4S"/>
                                             <outlet property="typeLabel" destination="PjF-PX-J1U" id="9wb-gu-nAm"/>
-                                            <segue destination="vwA-PC-dLz" kind="showDetail" identifier="showDetail" trigger="accessoryAction" id="e9o-Gk-iIL"/>
+                                            <segue destination="vwA-PC-dLz" kind="show" identifier="showDetail" id="nGi-uJ-bdb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -261,7 +261,7 @@
                                     <segment title="Name"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentetControlAction:" destination="bNL-iV-us2" eventType="valueChanged" id="5kY-Si-g9y"/>
+                                    <action selector="sortSelection:" destination="bNL-iV-us2" eventType="valueChanged" id="5kY-Si-g9y"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -269,9 +269,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="3bB-hx-gWU">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="5JL-tb-SDo">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="IJK-aY-qcB" propertyAccessControl="none">
                             <connections>
-                                <action selector="reverstSortAction:" destination="bNL-iV-us2" id="daq-j3-ydW"/>
+                                <action selector="reverstSorting:" destination="bNL-iV-us2" id="tVb-Bn-VOY"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VZH-cN-6sH">
@@ -281,7 +281,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="reverstSortButton" destination="5JL-tb-SDo" id="gOm-UG-00I"/>
+                        <outlet property="reverstSortingButton" destination="IJK-aY-qcB" id="e3N-Kb-H6d"/>
                         <outlet property="segmentetControl" destination="ycy-Ha-4Gx" id="UGz-Dy-Mni"/>
                         <outlet property="tableView" destination="dTW-cd-DM1" id="I9I-kH-KzY"/>
                     </connections>
@@ -332,10 +332,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e9o-Gk-iIL"/>
+        <segue reference="nGi-uJ-bdb"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="AZ" width="25" height="24"/>
+        <image name="AZ" width="25" height="25"/>
         <image name="Photo" width="195" height="196"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
