@@ -11,20 +11,19 @@ import RealmSwift
 
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var places : Results<Place>!
+    var ascendingSorted = true
 
     @IBOutlet weak var reverstSortingButton: UIBarButtonItem!
     @IBOutlet weak var segmentetControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
-    var places : Results<Place>!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        segmentetControl.setTitle("Date", forSegmentAt: 0)
-        segmentetControl.setTitle("Name", forSegmentAt: 1)
-        
-        
+        segmentetControl.setTitle("Name", forSegmentAt: 0)
+        segmentetControl.setTitle("Date", forSegmentAt: 1)
         
         places = realm.objects(Place.self)
 
@@ -95,13 +94,26 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     @IBAction func reverstSorting(_ sender: Any) {
         
+        ascendingSorted.toggle()
+        
+        if ascendingSorted {
+            reverstSortingButton.image = #imageLiteral(resourceName: "AZ")
+        } else {
+            reverstSortingButton.image = #imageLiteral(resourceName: "ZA")
+        }
+        sorting()
+        
     }
     @IBAction func sortSelection(_ sender: UISegmentedControl) {
         
-        if sender.selectedSegmentIndex == 0 {
-            places = places.sorted(byKeyPath: "date")
+     sorting()
+    }
+    private func sorting() {
+        
+        if segmentetControl.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "name", ascending: ascendingSorted)
         } else {
-            places = places.sorted(byKeyPath: "name")
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorted)
         }
         tableView.reloadData()
     }
