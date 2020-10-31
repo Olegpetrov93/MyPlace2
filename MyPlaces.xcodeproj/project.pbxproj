@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		631C474925442E3700FD1105 /* StorigeManadger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631C474825442E3700FD1105 /* StorigeManadger.swift */; };
+		63E4B52A254A2AAA002E72FD /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4B529254A2AAA002E72FD /* RatingControl.swift */; };
+		63E4B532254B1EE5002E72FD /* RatingPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4B531254B1EE5002E72FD /* RatingPresent.swift */; };
+		63E4B53B254C521D002E72FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E4B53A254C521D002E72FD /* MapViewController.swift */; };
 		97B28D4BAD2D03E06B36457A /* Pods_MyPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCBD05CEF354146BFFEA8144 /* Pods_MyPlaces.framework */; };
 		A6EA1064253E1054008E4EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F81DF1253DB69300A66AF0 /* Assets.xcassets */; };
 		A6EA106A253E2332008E4EF0 /* CutomViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA1069253E2332008E4EF0 /* CutomViewCellTableViewCell.swift */; };
@@ -22,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		631C474825442E3700FD1105 /* StorigeManadger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorigeManadger.swift; sourceTree = "<group>"; };
+		63E4B529254A2AAA002E72FD /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		63E4B531254B1EE5002E72FD /* RatingPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingPresent.swift; sourceTree = "<group>"; };
+		63E4B53A254C521D002E72FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A6EA1069253E2332008E4EF0 /* CutomViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		A6EA106B253E2682008E4EF0 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		A6EA106F253F12B3008E4EF0 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,9 @@
 				A6EA106B253E2682008E4EF0 /* PlaceModel.swift */,
 				631C474825442E3700FD1105 /* StorigeManadger.swift */,
 				A6EA106F253F12B3008E4EF0 /* NewPlaceViewController.swift */,
+				63E4B53A254C521D002E72FD /* MapViewController.swift */,
+				63E4B529254A2AAA002E72FD /* RatingControl.swift */,
+				63E4B531254B1EE5002E72FD /* RatingPresent.swift */,
 				A6F81DEE253DB69200A66AF0 /* Main.storyboard */,
 				A6F81DF1253DB69300A66AF0 /* Assets.xcassets */,
 				A6F81DF3253DB69300A66AF0 /* LaunchScreen.storyboard */,
@@ -221,7 +230,10 @@
 				A6F81DE9253DB69200A66AF0 /* AppDelegate.swift in Sources */,
 				631C474925442E3700FD1105 /* StorigeManadger.swift in Sources */,
 				A6EA1070253F12B3008E4EF0 /* NewPlaceViewController.swift in Sources */,
+				63E4B53B254C521D002E72FD /* MapViewController.swift in Sources */,
+				63E4B532254B1EE5002E72FD /* RatingPresent.swift in Sources */,
 				A6F81DEB253DB69200A66AF0 /* SceneDelegate.swift in Sources */,
+				63E4B52A254A2AAA002E72FD /* RatingControl.swift in Sources */,
 				A6EA106C253E2682008E4EF0 /* PlaceModel.swift in Sources */,
 				A6EA106A253E2332008E4EF0 /* CutomViewCellTableViewCell.swift in Sources */,
 				A6F81DFD253DC12E00A66AF0 /* TableViewController.swift in Sources */,

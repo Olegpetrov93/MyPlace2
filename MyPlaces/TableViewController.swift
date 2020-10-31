@@ -25,7 +25,6 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         return searchController.isActive && !searchBarIsEmty
     }
     
-
     @IBOutlet weak var reverstSortingButton: UIBarButtonItem!
     @IBOutlet weak var segmentetControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -34,7 +33,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         
         segmentetControl.setTitle("Name", forSegmentAt: 0)
-        segmentetControl.setTitle("Date", forSegmentAt: 1)
+        segmentetControl.setTitle("Stars", forSegmentAt: 1)
         
         places = realm.objects(Place.self)
         
@@ -75,6 +74,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
+        cell.ratingPresent.rating = Int(place.rating)
 
 
 
@@ -86,6 +86,10 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
      // MARK: - Table view delegat
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let place = places[indexPath.row]
@@ -148,7 +152,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         if segmentetControl.selectedSegmentIndex == 0 {
             places = places.sorted(byKeyPath: "name", ascending: ascendingSorted)
         } else {
-            places = places.sorted(byKeyPath: "date", ascending: ascendingSorted)
+            places = places.sorted(byKeyPath: "rating", ascending: ascendingSorted)
         }
         tableView.reloadData()
     }

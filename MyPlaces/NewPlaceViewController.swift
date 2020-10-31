@@ -12,17 +12,27 @@ class NewPlaceViewController: UITableViewController  {
     
     var imageIsChanged = false
     
-    var currentPlace: Place?
+    var currentPlace: Place!
     
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var placeName: UITextField!
     @IBOutlet weak var placeLocation: UITextField!
     @IBOutlet weak var placeType: UITextField!
+    @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var mapButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0,
+                                                         y: 0,
+                                                         width: tableView.frame.size.width,
+                                                         height: 1))
         
         saveButton.isEnabled = false
         
@@ -97,6 +107,15 @@ extension NewPlaceViewController: UITextFieldDelegate  {
         }
     }
     
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" { return }
+            
+            let mapVC = segue.destination as! MapViewController
+            mapVC.place = currentPlace
+        }
+    
     func savePlace() {
 
         var image: UIImage?
@@ -109,7 +128,11 @@ extension NewPlaceViewController: UITextFieldDelegate  {
         
         let imageData = image?.pngData()
         
-        let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData)
+        let newPlace = Place(name: placeName.text!,
+                             location: placeLocation.text,
+                             type: placeType.text,
+                             imageData: imageData,
+                             rating: Double(ratingControl.rating))
         
         if currentPlace != nil {
             try! realm.write {
@@ -117,6 +140,7 @@ extension NewPlaceViewController: UITextFieldDelegate  {
                 currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
         
@@ -139,6 +163,7 @@ extension NewPlaceViewController: UITextFieldDelegate  {
             placeName.text = currentPlace?.name
             placeLocation.text = currentPlace?.location
             placeType.text = currentPlace?.type
+            ratingControl.rating = Int(currentPlace.rating)
         }
     }
     private func setupNavigationBar() {
