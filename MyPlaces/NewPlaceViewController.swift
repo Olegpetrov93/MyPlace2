@@ -42,6 +42,12 @@ class NewPlaceViewController: UITableViewController  {
         
         setupEditScreen()
     }
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+
+        guard  let newPlaceVC = segue.source as? MapViewController else { return }
+
+        placeLocation.text = newPlaceVC.locationAddressLabel.text
+    }
 
 // MARK: Tabl view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -110,11 +116,22 @@ extension NewPlaceViewController: UITextFieldDelegate  {
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" { return }
+        
+        guard let indentifier = segue.identifier,
+              let mapVC = segue.destination as? MapViewController
+        else { return }
+        
+        mapVC.inkomeSegueIndentifier = indentifier
+        
+        if indentifier == "showMap" {
             
-            let mapVC = segue.destination as! MapViewController
-            mapVC.place = currentPlace
+        mapVC.place.name = placeName.text!
+        mapVC.place.location = placeLocation.text
+        mapVC.place.type = placeType.text
+        mapVC.place.imageData = placeImage.image?.pngData()
+        mapVC.place.rating = Double(ratingControl.rating)
         }
+    }
     
     func savePlace() {
 
@@ -203,5 +220,4 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
         placeImage.clipsToBounds = true
         dismiss(animated: true)
     }
-    
 }
